@@ -1,0 +1,26 @@
+{
+  "bot": {
+    "token": "your discord bot token",
+    "id": "bot id",
+    "admins": [
+      "ADMIN_USER_ID_1",
+      "ADMIN_USER_ID_2"
+    ],
+    "ownerId": "YOUR_OWNER_ID_HERE",
+    "developerCommandsServerIds": [
+      "DEV_SERVER_ID_1"
+    ]
+  },
+  "database": {
+    "mongodbUrl": "you mongoose id"
+  },
+  "logging": {
+    "guildJoinLogsId": "GUILD_JOIN_LOGS_CHANNEL_ID",
+    "guildLeaveLogsId": "GUILD_LEAVE_LOGS_CHANNEL_ID",
+    "commandLogsChannelId": "COMMAND_LOGS_CHANNEL_ID",
+    "errorLogs": "YOUR_ERROR_WEBHOOK_URL_HERE"
+  },
+  "prefix": {
+    "value": "#"
+  }
+}
