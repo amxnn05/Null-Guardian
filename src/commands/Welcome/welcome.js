@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits } = require('discord.js');
-const Welcomeconfig = require('../../schemas/welcomeSchema');
+const GateConfig = require('../../schemas/gateSchema');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -16,11 +16,12 @@ module.exports = {
             return interaction.reply({ content: "you need administrator permission!" })
         }
         const channel = options.getChannel('channel');
-        await Welcomeconfig.findOneAndUpdate(
+        await GateConfig.findOneAndUpdate(
             { guildId: guildId },
-            { channelId: channel.id, enabled: true },
-            { unsert: true, new: true }
+            { joinChannelId: channel.id, joinEnabled: true },
+            { upsert: true, new: true }
         )
+
         await interaction.reply({
             content: `Channel is set in ${channel}. ;)`,
             // ephemeral: true

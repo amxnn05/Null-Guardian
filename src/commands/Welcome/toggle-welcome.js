@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits } = require('discord.js');
-const Welcomeconfig = require('../../schemas/welcomeSchema');
+const GateConfig = require('../../schemas/gateSchema');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -11,25 +11,23 @@ module.exports = {
 			return interaction.reply({ content: "you need administrator permission!" })
 		}
 		try {
-			const data = await Welcomeconfig.findOne({
+			const data = await GateConfig.findOne({
 				guildId: guildId
 			})
-			if (!data || !data.channelId) {
+			if (!data || !data.joinChannelId) {
 				return interaction.reply({
 					content: "Please set a channel first."
 				})
-
-				data.enabled = !data.enabled;
-				await data.save();
-
-				return interaction.reply({
-					content: `Join messages are now **${data.enabled ? 'ON' : 'OFF'}**.`
-				})
 			}
-		}
+			data.joinEnabled = !data.joinEnabled;
+			await data.save();
 
+			return interaction.reply({
+				content: `Join messages are now **${data.joinEnabled ? 'ON' : 'OFF'}**.`
+			})
+		}
 		catch (error) {
-			console.log("error occured in welcome.js", error);
+			console.log("error occured in toggle-welcome.js", error);
 		}
 	}
 };
