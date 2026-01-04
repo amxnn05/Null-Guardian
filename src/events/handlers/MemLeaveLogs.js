@@ -16,9 +16,9 @@ module.exports = {
                 .setThumbnail(member.user.displayAvatarURL())
                 .setTimestamp();
 
-            await welcomechannel.send({ embeds: [leaveEmbed] });
+            await leavechannel.send({ embeds: [leaveEmbed] });
         } catch (err) {
-            console.log("Failed to send join message: ", err);
+            console.log("Failed to send leave message: ", err);
         }
     }
 };

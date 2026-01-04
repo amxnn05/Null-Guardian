@@ -30,7 +30,7 @@ function updatePresence(client, config, nameIndex) {
         const validStatusTypes = ['online', 'idle', 'dnd', 'invisible'];
         const status = validStatusTypes.includes(config.status?.toLowerCase())
             ? config.status.toLowerCase()
-            : 'online';
+            : 'dnd';
 
         // Get the activity type
         const type = activityTypeMap[config.type] || ActivityType.Playing;
@@ -180,9 +180,9 @@ module.exports = {
                         activities: [{
                             type: ActivityType.Custom,
                             name: 'custom',
-                            state: 'May i help you <3'
+                            state: 'cursed !!'
                         }],
-                        status: 'online'
+                        status: 'dnd'
                     });
                 }
             } else {
@@ -193,7 +193,7 @@ module.exports = {
                         name: 'custom',
                         state: '🚀 Made with discoBase!'
                     }],
-                    status: 'online'
+                    status: 'dnd'
                 });
             }
         } catch (error) {
@@ -206,7 +206,7 @@ module.exports = {
                     name: 'custom',
                     state: '🚀 Made with discoBase!'
                 }],
-                status: 'online'
+                status: 'dnd'
             });
         }
 
