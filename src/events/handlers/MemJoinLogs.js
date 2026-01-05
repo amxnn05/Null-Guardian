@@ -1,9 +1,9 @@
 const { EmbedBuilder, AttachmentBuilder } = require('discord.js');
 const gateSchema = require('../../schemas/gateSchema');
-const file = new AttachmentBuilder('./src/assets/gates/welcome.jpeg');
+const file = new AttachmentBuilder('./src/assets/gates/flower.gif');
 module.exports = {
     name: 'guildMemberAdd',
-    async execute(member, client) {
+    async execute(member, client, interaction) {
         try {
             const data = await gateSchema.findOne({ guildId: member.guild.id });
             if (!data || !data.joinEnabled) return;
@@ -13,14 +13,13 @@ module.exports = {
 
             const welcomeEmbed = new EmbedBuilder()
                 .setColor('#9f0548')
-                .setTitle('Welcome!')
-                .setDescription(`Hiee ${member}, nice meeting yuhh!! & welcome to **${member.guild.name}**!`)
+                .setTitle('**Welcome !!**')
+                .setDescription(`Nice meeting yuhh!! & welcome to **${member.guild.name}**!`)
                 .setThumbnail(member.user.displayAvatarURL())
-                .setImage('attachment://welcome.jpeg')
+                .setImage('attachment://flower.gif')
                 .setTimestamp();
 
-
-            await welcomechannel.send({ embeds: [welcomeEmbed], files: [file] });
+            await welcomechannel.send({ content: `Hieee ${member}`, embeds: [welcomeEmbed], files: [file] });
         } catch (err) {
             console.log("Failed to send join message: ", err);
         }
