@@ -24,4 +24,4 @@ module.exports = {
             console.log("Failed to send join message: ", err);
         }
     }
-};
+}; 
